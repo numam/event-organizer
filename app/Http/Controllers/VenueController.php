@@ -54,10 +54,12 @@ class VenueController extends Controller
             // Validasi dengan file
             $validated = $request->validate([
                 'name' => 'required|string|max:255',
+                'slug' => 'required|string|max:255|unique:venues,slug',
                 'address' => 'required|string',
                 'city' => 'required|string|max:255',
                 'province' => 'nullable|string|max:255',
                 'capacity' => 'nullable|integer|min:0',
+                'price' => 'nullable|numeric|min:0',
                 'facilities' => 'nullable|string',
                 'file' => 'nullable|file|mimes:jpg,jpeg,png,pdf,doc,docx|max:5120',
             ]);
